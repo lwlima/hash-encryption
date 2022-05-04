@@ -5,13 +5,13 @@
       <form class="example-form">
         <mat-form-field class="full-width" appearance="fill">
           <mat-label>Text</mat-label>
-          <input matInput>
+          <input matInput name="textmd5" #textmd5="ngModel" [(ngModel)]="text">
         </mat-form-field>
         <mat-form-field class="full-width" appearance="fill">
           <mat-label>Result</mat-label>
-          <input matInput readonly>
+          <input matInput readonly value="{{hash}}">
         </mat-form-field>
-        <button mat-flat-button color="primary">Gerar Hash</button>
+        <button mat-flat-button color="primary" (click)="encrypt('md5')">Gerar Hash</button>
       </form>
     </mat-tab>
     <mat-tab label="CBC">

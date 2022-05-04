@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Md5 } from 'ts-md5';
 
 @Component({
   selector: 'app-root',
@@ -10,40 +11,42 @@ export class AppComponent {
   title = 'HASH-ENCRYPTION';
   text: string = '';
   type: string = '';
-  hash: string = '';
+  hash: string | Int32Array = '';
 
-  encrypt = (text: string, type: string): string => {
-    let md5 = (text: string): string => {
+  encrypt = (type: string): string => {
+    let md5 = (): string|Int32Array => {
+      const md5 = new Md5();
+      this.hash = md5.appendStr(this.text).end();
+      return this.hash;
+    }
+
+    let cbc = (): string => {
       return this.hash = '';
     }
 
-    let cbc = (text: string): string => {
+    let hmac = (): string => {
       return this.hash = '';
     }
 
-    let hmac = (text: string): string => {
+    let mac = (): string => {
       return this.hash = '';
     }
 
-    let mac = (text: string): string => {
+    let sha1 = (): string => {
       return this.hash = '';
     }
 
-    let sha1 = (text: string): string => {
-      return this.hash = '';
-    }
-
-    let sha2 = (text: string): string => {
+    let sha2 = (): string => {
       return this.hash = '';
     }
 
     var methods: any = {
-      'md5':  md5(text),
-      'cbc':  cbc(text),
-      'hmac': hmac(text),
-      'mac':  mac(text),
-      'sha1': sha1(text),
-      'sha2': sha2(text),
+      'md5':  md5,
+      'cbc':  cbc,
+      'hmac': hmac,
+      'mac':  mac,
+      'sha1': sha1,
+      'sha2': sha2,
     };
 
     return methods[type]();
