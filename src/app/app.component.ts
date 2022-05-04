@@ -14,22 +14,18 @@ export class AppComponent {
   hash: string | Int32Array = '';
 
   encrypt = (type: string): string => {
+    let md2 = (): string => {
+      return this.hash = '';
+    }
+
+    let md4 = (): string => {
+      return this.hash = '';
+    }
+
     let md5 = (): string|Int32Array => {
       const md5 = new Md5();
       this.hash = md5.appendStr(this.text).end();
       return this.hash;
-    }
-
-    let cbc = (): string => {
-      return this.hash = '';
-    }
-
-    let hmac = (): string => {
-      return this.hash = '';
-    }
-
-    let mac = (): string => {
-      return this.hash = '';
     }
 
     let sha1 = (): string => {
@@ -40,13 +36,17 @@ export class AppComponent {
       return this.hash = '';
     }
 
+    let sha3 = (): string => {
+      return this.hash = '';
+    }
+
     var methods: any = {
+      'md2':  md2,
+      'md4':  md4,
       'md5':  md5,
-      'cbc':  cbc,
-      'hmac': hmac,
-      'mac':  mac,
       'sha1': sha1,
       'sha2': sha2,
+      'sha3': sha3,
     };
 
     return methods[type]();
