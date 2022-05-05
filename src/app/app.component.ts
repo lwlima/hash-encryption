@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Md5 } from 'ts-md5';
 import { sha256, sha224 } from 'js-sha256';
 import { sha384,sha512, sha512_224, sha512_256 } from 'js-sha512';
+import { SHA3 } from 'sha3';
 
 declare let require: any;
 
@@ -23,6 +24,10 @@ export class AppComponent {
   hashSha2_512: string = '';
   hashSha2_512_224: string = '';
   hashSha2_512_256: string = '';
+  hashSha3_224: any = null;
+  hashSha3_256: any = null;
+  hashSha3_384: any = null;
+  hashSha3_512: any = null;
   
   encrypt = (type: string): string => {
     let md5 = () => {
@@ -45,6 +50,18 @@ export class AppComponent {
     }
 
     let sha3 = () => {
+      const hash224 = new SHA3(224);
+      const hash256 = new SHA3(256);
+      const hash384 = new SHA3(384);
+      const hash512 = new SHA3(512);
+      hash224.update(this.text);
+      hash256.update(this.text);
+      hash384.update(this.text);
+      hash512.update(this.text);
+      this.hashSha3_224 = hash224.digest('hex');
+      this.hashSha3_256 = hash256.digest('hex');
+      this.hashSha3_384 = hash384.digest('hex');
+      this.hashSha3_512 = hash512.digest('hex');
     }
 
     var methods: any = {
