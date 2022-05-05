@@ -14,7 +14,10 @@ declare let require: any;
 
 export class AppComponent {
   title = 'HASH-ENCRYPTION';
-  text: string = '';
+  textMd5: string = '';
+  textSha1: string = '';
+  textSha2: string = '';
+  textSha3: string = '';
   type: string = '';
   hashMd5: string | Int32Array = '';
   hashSha1: string = '';
@@ -32,21 +35,21 @@ export class AppComponent {
   encrypt = (type: string): string => {
     let md5 = () => {
       const md5 = new Md5();
-      this.hashMd5 = md5.appendStr(this.text).end();
+      this.hashMd5 = md5.appendStr(this.textMd5).end();
     }
 
     let sha1 = () => {
       let sha1 = require('sha1');
-      this.hashSha1 = sha1(this.text);
+      this.hashSha1 = sha1(this.textSha1);
     }
 
     let sha2 = () => {
-      this.hashSha2_224 = sha224(this.text);
-      this.hashSha2_256 = sha256(this.text);
-      this.hashSha2_384 = sha384(this.text);
-      this.hashSha2_512 = sha512(this.text);
-      this.hashSha2_512_224 = sha512_224(this.text);
-      this.hashSha2_512_256 = sha512_256(this.text);
+      this.hashSha2_224 = sha224(this.textSha2);
+      this.hashSha2_256 = sha256(this.textSha2);
+      this.hashSha2_384 = sha384(this.textSha2);
+      this.hashSha2_512 = sha512(this.textSha2);
+      this.hashSha2_512_224 = sha512_224(this.textSha2);
+      this.hashSha2_512_256 = sha512_256(this.textSha2);
     }
 
     let sha3 = () => {
@@ -54,10 +57,10 @@ export class AppComponent {
       const hash256 = new SHA3(256);
       const hash384 = new SHA3(384);
       const hash512 = new SHA3(512);
-      hash224.update(this.text);
-      hash256.update(this.text);
-      hash384.update(this.text);
-      hash512.update(this.text);
+      hash224.update(this.textSha3);
+      hash256.update(this.textSha3);
+      hash384.update(this.textSha3);
+      hash512.update(this.textSha3);
       this.hashSha3_224 = hash224.digest('hex');
       this.hashSha3_256 = hash256.digest('hex');
       this.hashSha3_384 = hash384.digest('hex');
