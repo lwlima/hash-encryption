@@ -5,11 +5,11 @@
       <form class="form">
         <mat-form-field class="full-width" appearance="fill">
           <mat-label>Text</mat-label>
-          <input matInput name="textmd5" #textmd5="ngModel" [(ngModel)]="text">
+          <input matInput name="textMd5" #textMd5="ngModel" [(ngModel)]="text">
         </mat-form-field>
         <mat-form-field class="full-width" appearance="fill">
-          <mat-label>Result</mat-label>
-          <input matInput readonly value="{{hash}}">
+          <mat-label>Hash Md5</mat-label>
+          <input matInput readonly value="{{hashMd5}}">
         </mat-form-field>
         <button mat-flat-button color="primary" (click)="encrypt('md5')">Gerar Hash</button>
       </form>
@@ -19,11 +19,11 @@
       <form class="form">
         <mat-form-field class="full-width" appearance="fill">
           <mat-label>Text</mat-label>
-          <input matInput name="textsha1" #textsha1="ngModel" [(ngModel)]="text">
+          <input matInput name="textSha1" #textSha1="ngModel" [(ngModel)]="text">
         </mat-form-field>
         <mat-form-field class="full-width" appearance="fill">
-          <mat-label>Result</mat-label>
-          <input matInput readonly value="{{hash}}">
+          <mat-label>Hash Sha-1</mat-label>
+          <input matInput readonly value="{{hashSha1}}">
         </mat-form-field>
         <button mat-flat-button color="primary" (click)="encrypt('sha1')">Gerar Hash</button>
       </form>
@@ -32,13 +32,33 @@
       <form class="form">
         <mat-form-field class="full-width" appearance="fill">
           <mat-label>Text</mat-label>
-          <input matInput>
+          <input matInput name="textSha2" #textSha2="ngModel" [(ngModel)]="text">
         </mat-form-field>
         <mat-form-field class="full-width" appearance="fill">
-          <mat-label>Result</mat-label>
-          <input matInput readonly>
+          <mat-label>Hash Sha2-224</mat-label>
+          <input matInput readonly value="{{hashSha2_224}}">
         </mat-form-field>
-        <button mat-flat-button color="primary">Gerar Hash</button>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Hash Sha2-256</mat-label>
+          <input matInput readonly value="{{hashSha2_256}}">
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Hash Sha2-384</mat-label>
+          <input matInput readonly value="{{hashSha2_384}}">
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Hash Sha2-512</mat-label>
+          <input matInput readonly value="{{hashSha2_512}}">
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Hash Sha2-512/224</mat-label>
+          <input matInput readonly value="{{hashSha2_512_224}}">
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Hash Sha2-512/256</mat-label>
+          <input matInput readonly value="{{hashSha2_512_256}}">
+        </mat-form-field>
+        <button mat-flat-button color="primary" (click)="encrypt('sha2')">Gerar Hash</button>
       </form>
     </mat-tab>
     <mat-tab label="SHA-3">
